@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace Jframeworks\Shippingtracking\Block\System\Config;
+namespace Snapcx\Shippingtracking\Block\System\Config;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field;
@@ -15,7 +15,7 @@ class Collect extends Field
     /**
      * @var string
      */
-    protected $_template = 'Jframeworks_Shippingtracking::system/config/collect.phtml';
+    protected $_template = 'Snapcx_Shippingtracking::system/config/collect.phtml';
 
     /**
      * @param Context $context

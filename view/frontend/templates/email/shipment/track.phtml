@@ -11,10 +11,10 @@
 <?php $_order = $block->getOrder() ?>
 <?php if ($_shipment && $_order && $_shipment->getAllTracks()): ?>
 <br />
-<?php $moduleStatus = $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getConfig('shippingtracking/shippingtracking_settings/shippingtracking_email_text'); ?>
+<?php $moduleStatus = $this->helper('Snapcx\Shippingtracking\Helper\Data')->getConfig('shippingtracking/shippingtracking_settings/shippingtracking_email_text'); ?>
     <?php foreach ($_shipment->getAllTracks() as $_item){ 
 	
-		$url =  $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_item); 
+		$url =  $this->helper('Snapcx\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_item); 
 		$goodUrl = str_replace('/admin/', '/', $url);
 		$track_number =	"<a target='_blank' href='".$goodUrl."'>".$block->escapeHtml($_item->getNumber())."</a>";
 		

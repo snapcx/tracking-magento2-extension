@@ -3,7 +3,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Jframeworks\Shippingtracking\Block\Adminhtml\Order;
+namespace Snapcx\Shippingtracking\Block\Adminhtml\Order;
 
 use Magento\Backend\Block\Template;
 

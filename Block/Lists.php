@@ -1,5 +1,5 @@
 <?php
-namespace Jframeworks\Shippingtracking\Block;
+namespace Snapcx\Shippingtracking\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
@@ -37,7 +37,7 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
     }   //end funcion
   
   /**
-   *  Jframeworks api call via curl
+   *  Snapcx api call via curl
    *    Return array derived from json reponse from api
    *
    * @var $track_id string

@@ -2,7 +2,7 @@
 /**
  * Copyright © 2016 Eecom . All rights reserved.
  */
-namespace Jframeworks\Shippingtracking\Model\Rewrite\Config;
+namespace Snapcx\Shippingtracking\Model\Rewrite\Config;
 
 class Carrier extends \Magento\Framework\DataObject implements \Magento\Framework\Option\ArrayInterface
 {
