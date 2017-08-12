@@ -26,7 +26,7 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
     }//end function
   
     /**
-     *  Get jframeworks user_key set in config
+     *  Get snapcx user_key set in config
      *
      * @return     string
      */
@@ -46,18 +46,11 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
    */
     public function getTrackingList($track_id, $carrier_code)
     {
-        //Supported shipping codes
-        /* $supportedCodes = array('ups','usps','fedex','dhlint','dhl');
-	    		
-		if(!in_array($carrier_code,$supportedCodes)){
-			return 'No Tracking available for this carrier via UberCX Shipping Tracking Plugin.';
-		} */
-        
         if ($carrier_code=='dhlint') {
             $carrier_code = 'dhl';
         }
         
-        $base_url = $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/jframeworks_api_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $base_url = $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/snapcx_api_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         // URL to post to
         $base_url = str_replace('CARRIER_CODE', strtoupper($carrier_code), $base_url);
         $url = str_replace('TRACK_ID', $track_id, $base_url);
@@ -88,7 +81,7 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
         if ($status==200 && $response!='') {
             $response = json_decode($response);
         } elseif ($status==403) {
-            $response = "Please check your UberCX developer user key.";
+            $response = "Please check your snapCX Subscription user key.";
         } else {
             $response = "There is no tracking available.";
         }

@@ -38,7 +38,7 @@ button.action.close {
     position: absolute;
     z-index: -1;
 }
-.shipping-summary-container .jframeworksContent {
+.shipping-summary-container .snapcxContent {
   z-index: 1;   
 }
 
@@ -108,12 +108,6 @@ $_results = $this->getTrackingInfo();
 $deliveredImageURL =  $block->getViewFileUrl('Snapcx_Shippingtracking::images/delivered_green_sm.png');
 $shippedImageURL =  $block->getViewFileUrl('Snapcx_Shippingtracking::images/shipped_blue_sm.png');
 
-
-
-/* $uberCXMediaURL = $mediaURL . 'Snapcx/Shippingtracking/';
-$shippedImageURL = $uberCXMediaURL . 'shipped_blue_sm.png';
-$deliveredImageURL = $uberCXMediaURL . 'delivered_green_sm.png';  */
-
 ?>
 <div class="page-title title-buttons">
   <h1>Tracking Information</h1>
@@ -160,7 +154,7 @@ if(sizeof($_results) > 0):
   <div class="imageContent">
 	   <img src="<?php echo ($isDelivered)?$deliveredImageURL:$shippedImageURL ?>" /> 
 	</div>
-  <div class="jframeworksContent">
+  <div class="snapcxContent">
     <table class="tracking-summary-table">
      <tbody>
       <tr>
@@ -182,7 +176,7 @@ if(sizeof($_results) > 0):
   <div class="box-head">
     <h2>Tracking Details</h2>
   </div>
-  <table id="jframeworks-tracking-table<?php echo $track_id ?>" class="tracking_details">
+  <table id="snapcx-tracking-table<?php echo $track_id ?>" class="tracking_details">
     <thead>
       <tr>
         <th style="background-color: rgb(138, 192, 7); border-radius: 20px 0 0 0;"><b><?php echo'Time'; ?></b></th>
