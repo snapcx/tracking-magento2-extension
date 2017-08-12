@@ -1,5 +1,5 @@
 <?php
-namespace Snapcx\Shippingtracking\Block\Order;
+namespace snapcx\Shippingtracking\Block\Order;
 
 use Magento\Framework\View\Element\Template;
 

@@ -7,9 +7,9 @@
 /**
  * Invoice tracking control form
  */
-namespace Snapcx\Shippingtracking\Block\Adminhtml\Order\Tracking;
+namespace snapcx\Shippingtracking\Block\Adminhtml\Order\Tracking;
 
-class Invoice extends \Snapcx\Shippingtracking\Block\Adminhtml\Order\Tracking
+class Invoice extends \snapcx\Shippingtracking\Block\Adminhtml\Order\Tracking
 {
     /**
      * Retrieve invoice

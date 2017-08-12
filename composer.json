@@ -1,5 +1,5 @@
 {
-  "name": "Snapcx/shippingtracking",
+  "name": "snapcx/Shippingtracking",
   "description": "Track Shipment allows customer to track his order shipping using USPS, Fedex, UPS and DHL shipping methods.",
   "keywords" : ["snapcx", "shipping tracking", "order tracking", "magento2"],
   "require": {
@@ -16,7 +16,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Snapcx\\Shippingtracking\\": ""
+      "snapcx\\Shippingtracking\\": ""
     }
   }
 }

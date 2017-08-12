@@ -18,7 +18,7 @@
     </div>
     <div class="admin__page-section-item-content">
         <?php  if ($order->getTracksCollection()->count()) : ?>
-		<?php $url =  $this->helper('Snapcx\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($order); 
+		<?php $url =  $this->helper('snapcx\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($order); 
 						$goodUrl = str_replace('/admin/', '/', $url);
 						
 					?>

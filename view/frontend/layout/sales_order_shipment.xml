@@ -12,12 +12,12 @@
         <referenceContainer name="content">	   
 			<referenceBlock name="shipment_items">
 				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
-					<argument name="template" xsi:type="string">Snapcx_Shippingtracking::items.phtml</argument>
+					<argument name="template" xsi:type="string">snapcx_Shippingtracking::items.phtml</argument>
 				</action>			
 			</referenceBlock>			
 			<referenceBlock name="track-all-link">
 				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
-					<argument name="template" xsi:type="string">Snapcx_Shippingtracking::link.phtml</argument>
+					<argument name="template" xsi:type="string">snapcx_Shippingtracking::link.phtml</argument>
 				</action>			
 			</referenceBlock>					
         </referenceContainer>		
