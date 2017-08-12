@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
-    <template id="custom_shipment" label="Shipment Shipping Tracking" file="shipment-custom.html" type="html" module="snapcx_Shippingtracking" area="frontend"/>
-	<template id="custom_shipment_guest" label="Shipment Shipping Tracking For Guest" file="shipment-guest-custom.html" type="html" module="snapcx_Shippingtracking" area="frontend"/>
+    <template id="custom_shipment" label="Shipment Shipping Tracking" file="shipment-custom.html" type="html" module="snapcx_shippingtracking" area="frontend"/>
+	<template id="custom_shipment_guest" label="Shipment Shipping Tracking For Guest" file="shipment-guest-custom.html" type="html" module="snapcx_shippingtracking" area="frontend"/>
 	
 </config>

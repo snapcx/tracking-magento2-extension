@@ -1,5 +1,5 @@
 <?php
-namespace snapcx\Shippingtracking\Block;
+namespace snapcx\shippingtracking\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;

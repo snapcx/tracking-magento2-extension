@@ -1,5 +1,5 @@
 <?php
-namespace snapcx\Shippingtracking\Helper;
+namespace snapcx\shippingtracking\Helper;
 
 class Data extends \Magento\Shipping\Helper\Data
 {

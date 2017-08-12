@@ -5,14 +5,14 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<preference for="Magento\Sales\Block\Order\View" type="snapcx\Shippingtracking\Block\Order\View" /> 
-	<preference for="Magento\Shipping\Model\Info" type="snapcx\Shippingtracking\Model\Info"/> 	
-	 <preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddTrack" type="snapcx\Shippingtracking\Controller\Adminhtml\Order\Shipment\CustomTrack"/>
-	<preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\RemoveTrack" type="snapcx\Shippingtracking\Controller\Adminhtml\Order\Shipment\RemoveTrack"/> 
+	<preference for="Magento\Sales\Block\Order\View" type="snapcx\shippingtracking\Block\Order\View" /> 
+	<preference for="Magento\Shipping\Model\Info" type="snapcx\shippingtracking\Model\Info"/> 	
+	 <preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddTrack" type="snapcx\shippingtracking\Controller\Adminhtml\Order\Shipment\CustomTrack"/>
+	<preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\RemoveTrack" type="snapcx\shippingtracking\Controller\Adminhtml\Order\Shipment\RemoveTrack"/> 
 	
-	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="snapcx\Shippingtracking\Block\Adminhtml\Order\Tracking" /> 
-	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="snapcx\Shippingtracking\Block\Adminhtml\Order\Tracking\View" />
-	<!-- <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\Invoice" type="snapcx\Shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" />  --> 	
+	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="snapcx\shippingtracking\Block\Adminhtml\Order\Tracking" /> 
+	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="snapcx\shippingtracking\Block\Adminhtml\Order\Tracking\View" />
+	<!-- <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\Invoice" type="snapcx\shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" />  --> 	
 	
 	
 	

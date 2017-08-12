@@ -1,5 +1,5 @@
 <?php
-namespace snapcx\Shippingtracking\Controller\Lists;
+namespace snapcx\shippingtracking\Controller\Lists;
 
 class Index extends \Magento\Framework\App\Action\Action
 {

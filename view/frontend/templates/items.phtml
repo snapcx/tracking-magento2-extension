@@ -28,7 +28,7 @@
                 <?php if ($track->isCustom()): ?><?php echo $block->escapeHtml($track->getNumber()) ?><?php else: ?>
 				
 		
-	<?php $moduleStatus = $this->helper('snapcx\Shippingtracking\Helper\Data')->getConfig('shippingtracking/shippingtracking_settings/shippingtracking_order_page_text');
+	<?php $moduleStatus = $this->helper('snapcx\shippingtracking\Helper\Data')->getConfig('shippingtracking/shippingtracking_settings/shippingtracking_order_page_text');
 	
 
 		
@@ -41,7 +41,7 @@
 				
 				//echo "<p>".$final_text."</p>";
 				
-				 $this->helper('snapcx\Shippingtracking\Helper\Data')->getMessage($final_text);
+				 $this->helper('snapcx\shippingtracking\Helper\Data')->getMessage($final_text);
 			
 			?>
 					
@@ -75,7 +75,7 @@
         <span><?php /* @escapeNotVerified */ echo __('Print Shipment') ?></span>
     </a>
     <a href="#"
-       data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->helper('snapcx\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_shipment) ?>","windowName":"trackshipment","width":800,"height":600,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
+       data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->helper('snapcx\shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_shipment) ?>","windowName":"trackshipment","width":800,"height":600,"top":0,"left":0,"resizable":1,"scrollbars":1}}'
        title="<?php /* @escapeNotVerified */ echo __('Track this shipment') ?>"
        class="action track">
         <span><?php /* @escapeNotVerified */ echo __('Track this shipment') ?></span>
@@ -94,7 +94,7 @@
             foreach ($tracks as $track): ?>
                 <?php if ($track->isCustom()): ?><?php echo $block->escapeHtml($track->getNumber()) ?><?php else: ?><a
                     href="#"
-                    data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->helper('snapcx\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($track) ?>","windowName":"trackorder","width":800,"height":600,"left":0,"top":0,"resizable":1,"scrollbars":1}}'
+                    data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->helper('snapcx\shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($track) ?>","windowName":"trackorder","width":800,"height":600,"left":0,"top":0,"resizable":1,"scrollbars":1}}'
                     class="action track"><span><?php echo $block->escapeHtml($track->getNumber()) ?></span>
                     </a><?php endif; ?><?php if ($i != $_size): ?>, <?php endif; ?>
                 <?php $i++;

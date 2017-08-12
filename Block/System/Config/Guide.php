@@ -4,7 +4,7 @@
  * See LICENSE.txt for license details.
  */
 
-namespace snapcx\Shippingtracking\Block\System\Config;
+namespace snapcx\shippingtracking\Block\System\Config;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field;
@@ -15,7 +15,7 @@ class Guide extends Field
     /**
      * @var string
      */
-    protected $_template = 'snapcx_Shippingtracking::system/config/guide.phtml';
+    protected $_template = 'snapcx_shippingtracking::system/config/guide.phtml';
 
     /**
      * @param Context $context

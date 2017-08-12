@@ -57,7 +57,7 @@
                     <?php if ($_track->isCustom()): ?>
                     <?php echo $block->escapeHtml($_track->getNumber()) ?>
                     <?php else: ?>
-					<?php $url =  $this->helper('snapcx\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_track); 
+					<?php $url =  $this->helper('snapcx\shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_track); 
 						$goodUrl = str_replace('/admin/', '/', $url);
 						
 					?>

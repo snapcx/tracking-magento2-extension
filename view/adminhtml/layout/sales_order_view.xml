@@ -8,10 +8,10 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="order_tab_info">
-           <!--  <block class="Magento\Sales\Block\Adminhtml\Order\AbstractOrder" name="order_shipping_view" template="snapcx_Shippingtracking::info.phtml"/> -->
+           <!--  <block class="Magento\Sales\Block\Adminhtml\Order\AbstractOrder" name="order_shipping_view" template="snapcx_shippingtracking::info.phtml"/> -->
 		   <referenceBlock name="order_shipping_view">
 				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
-					<argument name="template" xsi:type="string">snapcx_Shippingtracking::info.phtml</argument>
+					<argument name="template" xsi:type="string">snapcx_shippingtracking::info.phtml</argument>
 				</action>			
 			</referenceBlock>
         </referenceBlock>

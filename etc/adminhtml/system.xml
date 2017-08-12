@@ -9,12 +9,12 @@
             <label>Shipping Tracking Settings</label>
 		
             <tab>snapCX</tab>
-            <resource>snapcx_Shippingtracking::snapx_control_section</resource>
+            <resource>snapcx_shippingtracking::snapx_control_section</resource>
             <group id="shippingtracking_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Global Shipping Tracking Settings</label>	
 				<comment><![CDATA[Enter your snapCX User Key here. <br/><br/> If you do not have one, <a target="_blank"  href="https://snapcx.io/pricing.jsp?solution=tracking&amp;utm_source=magento2&amp;utm_medium=plugin&amp;utm_campaign=tracking">Sign up for a FREE TRIAL Subscription</a><br/><br/><u>NO credit card required</u><br/><br/><b>For troubleshooting your account, please visit</b> <a target="_blank" href="https://snapcx.io/shippingTracking/troubleshooting">here</a>. <b>You will need your User key to test out</b>.]]></comment> 
 				<field id="user_guide" translate="User Guide" type="button" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <frontend_model>snapcx\Shippingtracking\Block\System\Config\Guide</frontend_model>                 
+                    <frontend_model>snapcx\shippingtracking\Block\System\Config\Guide</frontend_model>                 
                 </field> 				
 				<field id="shippingtracking_user_key" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>User key</label>
@@ -26,10 +26,10 @@
                 </field>
 				<field id="default_carrier" translate="label" type="select" sortOrder="20" showInDefault="50" showInWebsite="0" showInStore="0">
                     <label>Default Carrier</label>
-                    <source_model>snapcx\Shippingtracking\Model\Rewrite\Config\Carrier</source_model>
+                    <source_model>snapcx\shippingtracking\Model\Rewrite\Config\Carrier</source_model>
                 </field>
 				<field id="update_carrier" translate="label comment" type="button" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <frontend_model>snapcx\Shippingtracking\Block\System\Config\Collect</frontend_model>
+                    <frontend_model>snapcx\shippingtracking\Block\System\Config\Collect</frontend_model>
                    
                 </field>
 				<field id="shippingtracking_order_page_text" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
