@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="snapCX" translate="label" sortOrder="1100">
+            <label>snapCX Plugins</label>
+        </tab>
+        <section id="shippingtracking" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Shipping Tracking Settings</label>
+		
+            <tab>snapCX</tab>
+            <resource>Jframeworks_Shippingtracking::snapx_control_section</resource>
+            <group id="shippingtracking_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Global Shipping Tracking Settings</label>	
+				<comment><![CDATA[Enter your snapCX User Key here. <br/><br/> If you do not have one, <a target="_blank"  href="https://snapcx.io/pricing.jsp?solution=tracking&amp;utm_source=magento2&amp;utm_medium=plugin&amp;utm_campaign=tracking">Sign up for a FREE TRIAL Subscription</a><br/><br/><u>NO credit card required</u><br/><br/><b>For troubleshooting your account, please visit</b> <a target="_blank" href="https://snapcx.io/shippingTracking/troubleshooting">here</a>. <b>You will need your User key to test out</b>.]]></comment> 
+				<field id="user_guide" translate="User Guide" type="button" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <frontend_model>Jframeworks\Shippingtracking\Block\System\Config\Guide</frontend_model>                 
+                </field> 				
+				<field id="shippingtracking_user_key" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User key</label>
+					 <comment><![CDATA[<a target="_blank" href="https://snapcx.io/pricing.jsp?solution=tracking&amp;utm_source=magento2&amp;utm_medium=plugin&amp;utm_campaign=tracking">Get your User Key (Get TRIAL Subscription)</a>]]></comment>
+                </field>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="40" showInWebsite="0" showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="default_carrier" translate="label" type="select" sortOrder="20" showInDefault="50" showInWebsite="0" showInStore="0">
+                    <label>Default Carrier</label>
+                    <source_model>Jframeworks\Shippingtracking\Model\Rewrite\Config\Carrier</source_model>
+                </field>
+				<field id="update_carrier" translate="label comment" type="button" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <frontend_model>Jframeworks\Shippingtracking\Block\System\Config\Collect</frontend_model>
+                   
+                </field>
+				<field id="shippingtracking_order_page_text" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Page Text</label>
+					 <comment><![CDATA[Enter text that will appear on the order page. Use the shortcode %carrier% and %tracking_id% as placeholders]]></comment>
+                </field>
+				<field id="shippingtracking_email_text" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Text</label>
+					 <comment><![CDATA[Enter text that will appear on the shipment email. Use the shortcode %carrier% and %tracking_id% as placeholders]]></comment>
+                </field>
+               
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,90 @@
+<?php
+
+?>
+<?php /* @var $block \MageWorx\AlsoBought\Block\System\Config\Collect */ ?>
+<style>
+.user-guide {
+    float: left;
+    margin-left: -84%;
+    margin-bottom: 13px;
+    
+    margin-top: -17px;
+	
+}
+button#user_guide {
+    background: none;
+    border: none;
+    color: #007bdb;
+    cursor: pointer;
+	margin: 0;
+    padding: 2px;
+}
+
+ul.user-guide-level-1 {
+    font-size: 16px;
+    margin: 22px;
+}
+
+ul.user-guide-level-2 {
+    margin-top: 10px;
+    margin-left: 18px;
+}
+
+.user-guide-level-1 li {
+    padding-bottom: 10px;
+}
+</style>
+<script>
+    require([
+        'jquery',
+       
+		'Magento_Ui/js/modal/modal'
+    ], function($,modal){			
+			
+			 var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'User Guide',
+                buttons: [{
+                    text: $.mage.__('OK'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+			
+			var popup = modal(options, $('#popup-mpdal'));
+            $("#user_guide").on('click',function(){ 
+                $("#popup-mpdal").modal("openModal");
+
+            });
+			
+			
+       
+
+    });
+</script>
+
+<?php echo "<div class='user-guide'>".$block->getButtonHtml(); ?> 
+  <div id="popup-mpdal" style="display:none;">
+
+   <ul class="user-guide-level-1">
+   <li><strong>First of all you need to create a template using following steps:</strong>
+   <ul style="list-style-type:square" class="user-guide-level-2">
+   <li>Go to Dashboard > Marketing-> Email Template Menu</li>
+   <li>Click on Add New Template Button and select "Shipment Shipping tracking" from dropdown in Template. Then Click on load template button . Give Whatever name you want to template name input box and save template.</li>
+   </ul></li>
+   
+   <li><strong>Now Select that created template for shipment email using following steps:</strong>
+   <ul style="list-style-type:square" class="user-guide-level-2">
+   <li>Go to Stores->Configuration Menu then select "sales email" under sales section.</li>
+   <li>Go to "Shipment Email Template" dropdown and select created template. Save Config and refresh cache.</li>
+  
+   </ul>
+   </li>
+   </ul>
+   <h3><strong>Note: Use same steps for Guest shipment email. Use "Shipment Shipping tracking for guest" template.</strong></h3>
+	
+</div> 

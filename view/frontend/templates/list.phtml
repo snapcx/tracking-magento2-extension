@@ -1,0 +1,252 @@
+<?php
+/*
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU General Public License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/gpl-license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@refersion.com so we can send you a copy immediately.
+ *
+ * @category   UBERCX
+ * @package    Jframeworks_Shippingtracking
+ * @copyright  Copyright (c) 2015 Jframeworks, Inc.
+ * @author	   Jframeworks Developer <jframeworks_nospam@jframeworks.com>
+ * @license    http://opensource.org/licenses/gpl-license GNU General Public License
+ */
+?>
+<style type="text/css">
+
+button.action.close {
+    cursor: pointer;
+    padding: 7px;
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.shipping-summary-container {
+    position: relative;
+}
+.shipping-summary-container .imageContent {
+    opacity: 0.5;
+    top:-10px;
+    left:25%;
+    position: absolute;
+    z-index: -1;
+}
+.shipping-summary-container .jframeworksContent {
+  z-index: 1;   
+}
+
+.tracking-summary-table {
+ border: 2px solid #8AC007; 
+ border-radius: 15px; 
+ border-collapse: initial;
+ width: 100%;
+}
+
+.tracking-summary-table th {
+ background-color: rgb(138, 192, 7);
+ text-align: center;	
+}
+
+.shipping_details-container .tracking_details {
+ border: 2px solid #8AC007; 
+ border-radius: 25px 25px 0 0; 
+ border-collapse: initial;
+}
+	
+.tracking_details th {
+ background-color: rgb(138, 192, 7);		
+ text-align: center;
+}
+
+
+table tr.last th, table tr.last td {
+	border-bottom: 0 none !important;
+}
+table tbody th, table tbody td {
+	border-bottom: 1px solid #8AC007;
+	border-right: 1px solid #8AC007;
+}
+table td {
+	padding: 3px 8px;
+}/*
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+	vertical-align: top;
+}
+
+table .odd {
+	background: #f8f7f5 none repeat scroll 0 0;
+}
+table .even {
+	background: #eeeded none repeat scroll 0 0;
+}
+
+button {
+	float: right;
+}
+
+.woocommerce_tracking{
+	margin-top: 15px;
+}*/
+</style>
+<?php 
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+$currentStore = $storeManager->getStore();
+$mediaURL = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+$_results = $this->getTrackingInfo();
+
+$deliveredImageURL =  $block->getViewFileUrl('Jframeworks_Shippingtracking::images/delivered_green_sm.png');
+$shippedImageURL =  $block->getViewFileUrl('Jframeworks_Shippingtracking::images/shipped_blue_sm.png');
+
+
+
+/* $uberCXMediaURL = $mediaURL . 'Jframeworks/Shippingtracking/';
+$shippedImageURL = $uberCXMediaURL . 'shipped_blue_sm.png';
+$deliveredImageURL = $uberCXMediaURL . 'delivered_green_sm.png';  */
+
+?>
+<div class="page-title title-buttons">
+  <h1>Tracking Information</h1>
+		<button type="button" title="Close Window" class="action close" onclick="window.close(); window.opener.focus();">
+            <span>Close Window</span>
+        </button>
+</div>
+<br/>
+
+<?php 
+if(sizeof($_results) > 0): 
+
+	foreach($_results as $shipid => $_result): 
+	   if($shipid): ?>
+			<br/>
+			<h2 class="sub-title"><?php echo 'Shipment #'.$shipid; ?></h2>
+<?php endif; ?>
+
+<?php 
+ if(sizeof($_result) > 0):
+  foreach($_result as $track_id => $track): 
+   if (isset($track['tracking_number']) && isset($track['carrier_code'])) {
+    $tracking_list = $this->getTrackingList($track['tracking_number'],$track['carrier_code']);
+	
+	
+	 
+    if( is_object($tracking_list) 
+     && isset($tracking_list->header)
+     && ($tracking_list->header->status == 'SUCCESS')
+     && (isset($tracking_list->trackRecord[0])) 
+     && (isset($tracking_list->trackRecord[0]->trackSummary))
+	 && (empty($tracking_list->trackRecord[0]->trackSummary->errorMessage))
+				
+     	 
+    )  {	
+	   $trackSummaryVar = $tracking_list->trackRecord[0]->trackSummary;
+	   $isDelivered = ((int)$trackSummaryVar->delivered == 1)?true:false;
+	   
+	   
+	  
+?>
+<br/>
+<div class="shipping-summary-container">
+  <div class="imageContent">
+	   <img src="<?php echo ($isDelivered)?$deliveredImageURL:$shippedImageURL ?>" /> 
+	</div>
+  <div class="jframeworksContent">
+    <table class="tracking-summary-table">
+     <tbody>
+      <tr>
+	<th class="label" width="25%" style="border-radius: 12px 0 0 0;"><b>Shipping Status</b></th>
+	<td class="value last" colspan="3" style="border-radius:0 12px 0 0;"><?php echo $isDelivered?'DELIVERED':'SHIPPED';?></td>
+      </tr>
+      <tr>
+        <th class="label" width="25%" style="border-radius: 0 0 0 12px;"><b><?php echo 'Tracking Number'; ?></b></th>
+	<td class="value last"><?php echo $this->escapeHtml($trackSummaryVar->trackingId); ?></td>
+	<th class="label" width="15%"><b><?php echo 'Carrier'; ?></b></th>
+	<td class="value last" style="border-radius: 0 0 12px 0;"><?php echo $this->escapeHtml($track['title']); ?></td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+</div>
+<br/>
+<div class="shipping_details-container">
+  <div class="box-head">
+    <h2>Tracking Details</h2>
+  </div>
+  <table id="jframeworks-tracking-table<?php echo $track_id ?>" class="tracking_details">
+    <thead>
+      <tr>
+        <th style="background-color: rgb(138, 192, 7); border-radius: 20px 0 0 0;"><b><?php echo'Time'; ?></b></th>
+        <th style="background-color: rgb(138, 192, 7);"><b><?php echo 'Date'; ?></b></th>
+        <th style="background-color: rgb(138, 192, 7);"><b><?php echo 'Location'; ?><b></th>
+        <th style="background-color: rgb(138, 192, 7); border-radius: 0 20px 0 0;"><b><?php echo 'Message'; ?></b></th>
+      </tr>
+    </thead>
+	
+    <tbody>
+  <?php 
+    if(count($tracking_list->trackRecord[0]->trackEvent > 0)){ 
+     $evenRow = True;
+     foreach($tracking_list->trackRecord[0]->trackEvent as $track_record){
+      if($evenRow) { ?>
+	<tr class="first last odd">
+   <?php } else { ?>
+	<tr class="first last odd" style="background-color: #e3e3e3;">
+	<?php } ?>
+        <td><span class="nobr"><?php echo $track_record->time;?></span></td>
+        <td><span class="nobr"><?php echo $track_record->date;?></span></td>
+        <td><?php echo $track_record->location;?></td>
+        <td><?php echo $track_record->message;?></td>
+      </tr>
+      <?php 
+			$evenRow = !$evenRow; 
+		} //end of foreach of track events
+		} else {
+			?>
+      <tr>
+      	<td colspan="4"><p><?php echo 'There is no tracking available for this track number.'; ?></p></td>
+      </tr>
+  <?php } //end of if count of events is > 0
+	?>
+    </tbody>
+  </table>
+ </div>
+
+ 
+<?php } else{ ?>
+<p><?php
+$trackSummaryVar = $tracking_list->header->request->requestParams[1]->value;
+echo 'Invalid Tracking Number '.$this->escapeHtml($trackSummaryVar).' ';
+?></p>
+<?php } //end of BIG if checks
+	 } //end of "if" tracking# is available
+?> 
+<!--end for each tracking information-->
+<?php endforeach; ?>
+<?php else: ?>
+<p><?php echo 'There is no tracking available for this shipment.';
+die();
+ ?></p>
+<?php endif; ?>
+<?php endforeach; ?>
+<?php else: ?>
+<p><?php echo 'There is no tracking available.';
+die();
+ ?></p>
+<?php endif; ?>
+<button type="button" title="Close Window" class="action close" onclick="window.close(); window.opener.focus();">
+            <span>Close Window</span>
+        </button>
+
+<?php die(); ?>
+
+

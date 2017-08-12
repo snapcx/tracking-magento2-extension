@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+ <update handle="sales_order_shipment_renderers"/>
+    <body>
+        <referenceContainer name="content">	   
+			<referenceBlock name="shipment_items">
+				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
+					<argument name="template" xsi:type="string">Jframeworks_Shippingtracking::items.phtml</argument>
+				</action>			
+			</referenceBlock>			
+			<referenceBlock name="track-all-link">
+				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
+					<argument name="template" xsi:type="string">Jframeworks_Shippingtracking::link.phtml</argument>
+				</action>			
+			</referenceBlock>					
+        </referenceContainer>		
+    </body>
+</page>
