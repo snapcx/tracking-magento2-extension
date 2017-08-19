@@ -1,5 +1,5 @@
 <?php
-namespace snapcx\shippingtracking\Block;
+namespace jframeworks\shippingtracking\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
@@ -26,7 +26,7 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
     }//end function
   
     /**
-     *  Get snapcx user_key set in config
+     *  Get jframeworks user_key set in config
      *
      * @return     string
      */
@@ -37,7 +37,7 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
     }   //end funcion
   
   /**
-   *  snapcx api call via curl
+   *  jframeworks api call via curl
    *    Return array derived from json reponse from api
    *
    * @var $track_id string
@@ -50,7 +50,7 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
             $carrier_code = 'dhl';
         }
         
-        $base_url = $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/snapcx_api_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $base_url = $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/jframeworks_api_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         // URL to post to
         $base_url = str_replace('CARRIER_CODE', strtoupper($carrier_code), $base_url);
         $url = str_replace('TRACK_ID', $track_id, $base_url);

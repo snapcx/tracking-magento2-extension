@@ -4,6 +4,6 @@
  */
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'snapcx_shippingtracking',
+    'jframeworks_shippingtracking',
     __DIR__
 );

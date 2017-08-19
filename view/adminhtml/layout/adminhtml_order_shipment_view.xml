@@ -7,17 +7,17 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-       <!--  <block class="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" name="shipment_tracking" template="snapcx_shippingtracking::order/tracking/view.phtml"/> -->
+       <!--  <block class="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" name="shipment_tracking" template="jframeworks_shippingtracking::order/tracking/view.phtml"/> -->
 		<referenceContainer name="admin.scope.col.wrap" htmlClass="admin__old" />
 		<referenceContainer name="content">
 			<referenceBlock name="shipment_tracking">
 				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
-					<argument name="template" xsi:type="string">snapcx_shippingtracking::view.phtml</argument>
+					<argument name="template" xsi:type="string">jframeworks_shippingtracking::view.phtml</argument>
 				</action>			
 			</referenceBlock>
 			<referenceBlock name="form">
 				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
-					<argument name="template" xsi:type="string">snapcx_shippingtracking::form.phtml</argument>
+					<argument name="template" xsi:type="string">jframeworks_shippingtracking::form.phtml</argument>
 				</action>			
 			</referenceBlock>
 		</referenceContainer>

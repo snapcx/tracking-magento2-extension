@@ -7,9 +7,9 @@
 /**
  * Invoice tracking control form
  */
-namespace snapcx\shippingtracking\Block\Adminhtml\Order\Tracking;
+namespace jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking;
 
-class Invoice extends \snapcx\shippingtracking\Block\Adminhtml\Order\Tracking
+class Invoice extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
 {
     /**
      * Retrieve invoice

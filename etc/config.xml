@@ -3,7 +3,7 @@
     <default>
         <shippingtracking>
             <shippingtracking_settings>
-                <snapcx_api_url>https://api.snapcx.io/tracking/v1/getTrackingDetails?carrier=CARRIER_CODE&amp;trackId=TRACK_ID</snapcx_api_url>
+                <jframeworks_api_url>https://api.snapcx.io/tracking/v1/getTrackingDetails?carrier=CARRIER_CODE&amp;trackId=TRACK_ID</jframeworks_api_url>
 				<shippingtracking_order_page_text>
 				Your orders has been shipped by %carrier%. The tracking number is: %tracking_id%
 				</shippingtracking_order_page_text>
