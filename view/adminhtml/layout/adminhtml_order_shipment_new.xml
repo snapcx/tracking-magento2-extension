@@ -14,7 +14,7 @@
 				   
 		    <referenceBlock name="shipment_tracking">
 				<action method="setTemplate" ifconfig="shippingtracking/shippingtracking_settings/enable">
-					<argument name="template" xsi:type="string">snapcx_shippingtracking::order/tracking.phtml</argument>
+					<argument name="template" xsi:type="string">jframeworks_shippingtracking::order/tracking.phtml</argument>
 				</action>			
 			</referenceBlock>
                   

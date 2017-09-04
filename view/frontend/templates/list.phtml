@@ -13,7 +13,7 @@
  * to license@refersion.com so we can send you a copy immediately.
  *
  * @category   SNAPCX
- * @package    snapcx_shippingtracking
+ * @package    jframeworks_shippingtracking
  * @copyright  Copyright (c) 2015 JFrameworks.com LLC.
  * @author	   SnapCX Developer <support_nospam@snapcx.io>
  * @license    http://opensource.org/licenses/gpl-license GNU General Public License
@@ -38,7 +38,7 @@ button.action.close {
     position: absolute;
     z-index: -1;
 }
-.shipping-summary-container .snapcxContent {
+.shipping-summary-container .jframeworksContent {
   z-index: 1;   
 }
 
@@ -105,8 +105,8 @@ $mediaURL = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_
 
 $_results = $this->getTrackingInfo();
 
-$deliveredImageURL =  $block->getViewFileUrl('snapcx_shippingtracking::images/delivered_green_sm.png');
-$shippedImageURL =  $block->getViewFileUrl('snapcx_shippingtracking::images/shipped_blue_sm.png');
+$deliveredImageURL =  $block->getViewFileUrl('jframeworks_shippingtracking::images/delivered_green_sm.png');
+$shippedImageURL =  $block->getViewFileUrl('jframeworks_shippingtracking::images/shipped_blue_sm.png');
 
 ?>
 <div class="page-title title-buttons">
@@ -154,7 +154,7 @@ if(sizeof($_results) > 0):
   <div class="imageContent">
 	   <img src="<?php echo ($isDelivered)?$deliveredImageURL:$shippedImageURL ?>" /> 
 	</div>
-  <div class="snapcxContent">
+  <div class="jframeworksContent">
     <table class="tracking-summary-table">
      <tbody>
       <tr>
@@ -176,7 +176,7 @@ if(sizeof($_results) > 0):
   <div class="box-head">
     <h2>Tracking Details</h2>
   </div>
-  <table id="snapcx-tracking-table<?php echo $track_id ?>" class="tracking_details">
+  <table id="jframeworks-tracking-table<?php echo $track_id ?>" class="tracking_details">
     <thead>
       <tr>
         <th style="background-color: rgb(138, 192, 7); border-radius: 20px 0 0 0;"><b><?php echo'Time'; ?></b></th>
@@ -226,21 +226,19 @@ echo 'Invalid Tracking Number '.$this->escapeHtml($trackSummaryVar).' ';
 ?> 
 <!--end for each tracking information-->
 <?php endforeach; ?>
-<?php else: ?>
+<?php else { ?>
 <p><?php echo 'There is no tracking available for this shipment.';
-die();
  ?></p>
-<?php endif; ?>
+<?php } endif; ?>
 <?php endforeach; ?>
 <?php else: ?>
 <p><?php echo 'There is no tracking available.';
-die();
  ?></p>
 <?php endif; ?>
 <button type="button" title="Close Window" class="action close" onclick="window.close(); window.opener.focus();">
             <span>Close Window</span>
         </button>
 
-<?php die(); ?>
+<?php  ?>
 
 

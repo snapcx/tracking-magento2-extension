@@ -1,5 +1,5 @@
 <?php
-namespace snapcx\shippingtracking\Model;
+namespace jframeworks\shippingtracking\Model;
 
 use Magento\Sales\Model\Order\Shipment;
 
