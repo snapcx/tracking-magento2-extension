@@ -7,7 +7,6 @@ use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
 class Lists extends \Magento\Shipping\Block\Tracking\Popup
 {
    
-   
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $registry,
@@ -17,12 +16,15 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
     
         parent::__construct($context, $registry, $dateTimeFormatter, $data);
     }
-    
-   
    
     public function isEnabled()
     {
-        return $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/enable', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this
+            ->_scopeConfig
+            ->getValue(
+                'shippingtracking/shippingtracking_settings/enable',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            );
     }//end function
   
     /**
@@ -32,7 +34,12 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
      */
     public function getUserKey()
     {
-            $api_key = $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/shippingtracking_user_key', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+            $api_key = $this
+                ->_scopeConfig
+                ->getValue(
+                    'shippingtracking/shippingtracking_settings/shippingtracking_user_key', 
+                    \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+                );
             return $api_key;
     }   //end funcion
   
@@ -50,7 +57,12 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
             $carrier_code = 'dhl';
         }
         
-        $base_url = $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/jframeworks_api_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $base_url = $this
+            ->_scopeConfig
+            ->getValue(
+                'shippingtracking/shippingtracking_settings/jframeworks_api_url',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            );
         // URL to post to
         $base_url = str_replace('CARRIER_CODE', strtoupper($carrier_code), $base_url);
         $url = str_replace('TRACK_ID', $track_id, $base_url);

@@ -1,62 +1,39 @@
 <?php
-
 ?>
 <?php /* @var $block \MageWorx\AlsoBought\Block\System\Config\Collect */ ?>
-
 <script>
     require([
         'jquery',
         'prototype'
     ], function(jQuery){
-
         var collectSpan = jQuery('#collect_span');
-
         jQuery('#update_carrier').click(function () {
             var params = {};
             new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
                 parameters:     params,
-                
                 asynchronous:   true,
-				showLoader:true,
+                showLoader:true,
                 onCreate: function() {
-
                 },
                 onSuccess: function(response) {
-					
-					
-					
-					var resArray = response.responseJSON;
-					
-					
-					jQuery("#shippingtracking_shippingtracking_settings_default_carrier").empty();
-					
-					 jQuery("#collect_message_span").show().delay(3000).fadeOut();
-					
-					jQuery('#shippingtracking_shippingtracking_settings_default_carrier').append(jQuery('<option>', {
-							value: "0",
-							text: "Select Default Carrier"
-						}));
-					for(var i=0; i <= resArray.length; i++){
-						
-						//console.log(resArray[i].carrierCode);
-						
-						
-						jQuery('#shippingtracking_shippingtracking_settings_default_carrier').append(jQuery('<option>', {
-							value: resArray[i].carrierCode,
-							text: resArray[i].carrierName
-						}));
-						
-						
-					}
-					
-				
-
+                    var resArray = response.responseJSON;
+                    jQuery("#shippingtracking_shippingtracking_settings_default_carrier").empty();
+                     jQuery("#collect_message_span").show().delay(3000).fadeOut();
+                    jQuery('#shippingtracking_shippingtracking_settings_default_carrier').append(jQuery('<option>', {
+                            value: "0",
+                            text: "Select Default Carrier"
+                        }));
+                    for(var i=0; i <= resArray.length; i++){
+                        //console.log(resArray[i].carrierCode);
+                        jQuery('#shippingtracking_shippingtracking_settings_default_carrier').append(jQuery('<option>', {
+                            value: resArray[i].carrierCode,
+                            text: resArray[i].carrierName
+                        }));
+                    }
                 }
             });
         });
-
     });
 </script>
-
-<?php echo $block->getButtonHtml() ?> 
+<?php echo $block->getButtonHtml() ?>
     <br/><br/><span id="collect_message_span" style="display:none;color:#eb5202">Carrier List Updated Successfully.</span>

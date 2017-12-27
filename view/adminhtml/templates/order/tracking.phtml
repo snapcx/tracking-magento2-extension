@@ -3,9 +3,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 // @codingStandardsIgnoreFile
-
 ?>
 <?php /** @var $block Magento\Shipping\Block\Adminhtml\Order\Tracking */?>
 <script>
@@ -15,13 +13,8 @@ require(['prototype'], function(){
     trackingControl = {
         index : 0,
         add : function () {
-			
-			
-	
-			
             this.index++;
             var data = {index:this.index};
-
             Element.insert($('track_row_container'), {
                 bottom: this.template({
                     data: data
@@ -31,10 +24,9 @@ require(['prototype'], function(){
             $('trackingT' + this.index).disabled = false;
             $('trackingN' + this.index).disabled = false;
             this.bindCurrierOnchange();
-			
-			var Customelement = document.getElementById('trackingC'+this.index);
-			Customelement.value = "<?php echo $block->getDefaultCarrier()?>";
-			$('trackingT'+this.index).value = Customelement.options[Customelement.selectedIndex].text;
+            var Customelement = document.getElementById('trackingC'+this.index);
+            Customelement.value = "<?php echo $block->getDefaultCarrier()?>";
+            $('trackingT'+this.index).value = Customelement.options[Customelement.selectedIndex].text;
         },
         deleteRow : function(event) {
             var row = Event.findElement(event, 'tr');
@@ -63,10 +55,8 @@ require(['prototype'], function(){
             }
         }
     };
-
     window.trackingControl = trackingControl;
     //]]>
-
 });
 </script>
 <script id="track_row_template" type="text/x-magento-template">
@@ -76,7 +66,7 @@ require(['prototype'], function(){
                     id="trackingC<%- data.index %>"
                     class="select admin__control-select carrier"
                     disabled="disabled">
-                <?php foreach ($block->getCarriers() as $_code => $_name): ?>
+                <?php foreach ($block->getCarriers() as $_code => $_name) : ?>
                     <option value="<?php /* @escapeNotVerified */ echo $_code ?>"><?php echo $block->escapeHtml($_name) ?></option>
                 <?php endforeach; ?>
             </select>
@@ -107,7 +97,6 @@ require(['prototype'], function(){
         </td>
     </tr>
 </script>
-
 <div class="admin__control-table-wrapper">
     <table class="data-table admin__control-table" id="tracking_numbers_table">
         <thead>
@@ -132,10 +121,8 @@ require([
     'mage/template',
     'prototype'
 ], function (mageTemplate) {
-
     //<![CDATA[
     trackingControl.template = mageTemplate('#track_row_template');
     //]]>
-
 });
 </script>

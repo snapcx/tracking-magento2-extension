@@ -5,8 +5,6 @@
  */
 namespace jframeworks\shippingtracking\Model\Rewrite\Config\Source;
 
-use Magento\Framework\Option\ArrayInterface;
-
 class Custommethods extends \Magento\Shipping\Model\Config\Source\Allmethods
 {
     /**

@@ -9,13 +9,12 @@ use Magento\Backend\Block\Template;
 
 /**
  * Shipment tracking control form
- *
  */
  
 class Tracking extends \Magento\Shipping\Block\Adminhtml\Order\Tracking
 {
 
-    protected $scopeConfig;
+ protected $scopeConfig;
 
     protected $_carrierFactory;
    
@@ -31,7 +30,6 @@ class Tracking extends \Magento\Shipping\Block\Adminhtml\Order\Tracking
         parent::__construct($context, $shippingConfig, $registry, $data);
     }
   
-  
     protected function _prepareLayout()
     {
         $this->addChild(
@@ -40,7 +38,6 @@ class Tracking extends \Magento\Shipping\Block\Adminhtml\Order\Tracking
             ['label' => __('Add Tracking Number'), 'class' => '', 'onclick' => 'trackingControl.add()']
         );
     }
-    
     
     public function getShipment()
     {
@@ -96,7 +93,6 @@ class Tracking extends \Magento\Shipping\Block\Adminhtml\Order\Tracking
     {
         return $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/enable', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }//end function
-
     
     protected function _getCarriersInstances()
     {

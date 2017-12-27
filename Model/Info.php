@@ -38,8 +38,12 @@ class Info extends \Magento\Shipping\Model\Info
     public function getTrackingInfoByOrder()
     {
         
-        
-        $isEnable = $this->scopeConfig->getValue('shippingtracking/shippingtracking_settings/enable', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $isEnable = $this
+            ->scopeConfig
+            ->getValue(
+                  'shippingtracking/shippingtracking_settings/enable', 
+                  \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+              );
         if ($isEnable == "1") {
             $shipTrack = [];
             $order = $this->_initOrder();
@@ -73,7 +77,11 @@ class Info extends \Magento\Shipping\Model\Info
     public function getTrackingInfoByShip()
     {
         
-        $isEnable = $this->scopeConfig->getValue('shippingtracking/shippingtracking_settings/enable', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $isEnable = $this
+            ->scopeConfig->getValue(
+                'shippingtracking/shippingtracking_settings/enable',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            );
         if ($isEnable == "1") {
             $shipTrack = [];
             $shipment = $this->_initShipment();
@@ -95,7 +103,6 @@ class Info extends \Magento\Shipping\Model\Info
             return parent::getTrackingInfoByShip();
         }
     }
-
     /**
      * Retrieve tracking by tracking entity id
      *
@@ -104,7 +111,11 @@ class Info extends \Magento\Shipping\Model\Info
     public function getTrackingInfoByTrackId()
     {
         
-        $isEnable = $this->scopeConfig->getValue('shippingtracking/shippingtracking_settings/enable', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $isEnable = $this
+            ->scopeConfig->getValue(
+                'shippingtracking/shippingtracking_settings/enable', 
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            );
         if ($isEnable == "1") {
             $track = $this->salesOrderShipmentTrackFactory->create()->load($this->getTrackId());
             $this->setShipId($track->getParentId());

@@ -9,16 +9,12 @@ namespace jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking;
 
 /**
  * Shipment tracking control form
- *
  */
 class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
 {
     /**
      * @var \Magento\Shipping\Model\CarrierFactory
-     */
-   
-
-    /**
+     * 
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Shipping\Model\Config $shippingConfig
      * @param \Magento\Framework\Registry $registry
@@ -59,7 +55,9 @@ class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
      */
     public function getSubmitUrl()
     {
-        return $this->getUrl('adminhtml/*/addTrack/', ['shipment_id' => $this->getShipment()->getId()]);
+        return $this->getUrl('adminhtml/*/addTrack/', [
+             'shipment_id' => $this->getShipment()->getId()
+        ]);
     }
 
     /**
@@ -104,9 +102,10 @@ class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
     public function getDefaultCarrier()
     {
         
-        return  $this->scopeConfig->getValue(
-            'shippingtracking/shippingtracking_settings/default_carrier',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        return  $this
+            ->scopeConfig->getValue(
+                'shippingtracking/shippingtracking_settings/default_carrier',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
     }
 }

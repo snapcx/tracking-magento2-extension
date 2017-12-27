@@ -9,9 +9,6 @@ class Carrier extends \Magento\Framework\DataObject implements \Magento\Framewor
    
     public function toOptionArray()
     {
-       
-        
-        
         $api_url ="https://api.snapcx.io/tracking/v1/getCarriers";
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $api_url);
