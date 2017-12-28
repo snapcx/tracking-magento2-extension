@@ -5,18 +5,15 @@ use Magento\Sales\Model\Order\Shipment;
 
 class Info extends \Magento\Shipping\Model\Info
 {
-
     /**
      * @var \Magento\Sales\Model\Order\Shipment\TrackFactory
      */
-    protected $salesOrderShipmentTrackFactory;
-     
+    private $salesOrderShipmentTrackFactory;
      /**
       * @var \Magento\Store\Model\StoreManagerInterface
       */
-     
-    protected $scopeConfig;
-
+    private $scopeConfig;
+    
     public function __construct(
         \Magento\Shipping\Helper\Data $shippingData,
         \Magento\Sales\Model\OrderFactory $orderFactory,
@@ -37,24 +34,21 @@ class Info extends \Magento\Shipping\Model\Info
      */
     public function getTrackingInfoByOrder()
     {
-        
         $isEnable = $this
             ->scopeConfig
             ->getValue(
-                  'shippingtracking/shippingtracking_settings/enable', 
-                  \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-              );
+                'shippingtracking/shippingtracking_settings/enable',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            );
         if ($isEnable == "1") {
             $shipTrack = [];
             $order = $this->_initOrder();
-        
             if ($order) {
                 $shipments = $order->getShipmentsCollection();
                 foreach ($shipments as $shipment) {
                     $increment_id = $shipment->getIncrementId();
                     $tracks = $shipment->getTracksCollection();
                     $trackingInfos=[];
-                    
                     foreach ($tracks as $track) {
                         $trackingInfos[$track->getId()]['tracking_number'] = $track->getTrackNumber();
                         $trackingInfos[$track->getId()]['title'] = $track->getTitle();
@@ -76,7 +70,6 @@ class Info extends \Magento\Shipping\Model\Info
      */
     public function getTrackingInfoByShip()
     {
-        
         $isEnable = $this
             ->scopeConfig->getValue(
                 'shippingtracking/shippingtracking_settings/enable',
@@ -89,7 +82,6 @@ class Info extends \Magento\Shipping\Model\Info
                 $increment_id = $shipment->getIncrementId();
                 $tracks = $shipment->getTracksCollection();
                 $trackingInfos=[];
-                
                 foreach ($tracks as $track) {
                     $trackingInfos[$track->getId()]['tracking_number'] = $track->getTrackNumber();
                     $trackingInfos[$track->getId()]['title'] = $track->getTitle();
@@ -110,10 +102,9 @@ class Info extends \Magento\Shipping\Model\Info
      */
     public function getTrackingInfoByTrackId()
     {
-        
         $isEnable = $this
             ->scopeConfig->getValue(
-                'shippingtracking/shippingtracking_settings/enable', 
+                'shippingtracking/shippingtracking_settings/enable',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
             );
         if ($isEnable == "1") {

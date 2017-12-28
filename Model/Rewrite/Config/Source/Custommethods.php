@@ -12,13 +12,11 @@ class Custommethods extends \Magento\Shipping\Model\Config\Source\Allmethods
      *
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $_scopeConfig;
-
+    private $scopeConfig;
     /**
      * @var \Magento\Shipping\Model\Config
      */
-    protected $_shippingConfig;
-
+    private $shippingConfig;
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Shipping\Model\Config $shippingConfig
@@ -27,10 +25,9 @@ class Custommethods extends \Magento\Shipping\Model\Config\Source\Allmethods
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Shipping\Model\Config $shippingConfig
     ) {
-        $this->_scopeConfig = $scopeConfig;
-        $this->_shippingConfig = $shippingConfig;
+        $this->scopeConfig = $scopeConfig;
+        $this->shippingConfig = $shippingConfig;
     }
-
     /**
      * Return array of carriers.
      * If $isActiveOnlyFlag is set to true, will return only active carriers
@@ -41,7 +38,7 @@ class Custommethods extends \Magento\Shipping\Model\Config\Source\Allmethods
     public function toOptionArray($isActiveOnlyFlag = false)
     {
         $methods = [['value' => '', 'label' => '']];
-        $carriers = $this->_shippingConfig->getAllCarriers();
+        $carriers = $this->shippingConfig->getAllCarriers();
         foreach ($carriers as $carrierCode => $carrierModel) {
             if (!$carrierModel->isActive() && (bool)$isActiveOnlyFlag === true) {
                 continue;
@@ -50,7 +47,7 @@ class Custommethods extends \Magento\Shipping\Model\Config\Source\Allmethods
             if (!$carrierMethods) {
                 continue;
             }
-            $carrierTitle = $this->_scopeConfig->getValue(
+            $carrierTitle = $this->scopeConfig->getValue(
                 'carriers/' . $carrierCode . '/title',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
             );
@@ -62,7 +59,5 @@ class Custommethods extends \Magento\Shipping\Model\Config\Source\Allmethods
                 ];
             }
         }
-
-       // return $methods;
     }
 }

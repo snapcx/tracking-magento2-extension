@@ -3,7 +3,6 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 /**
  * Invoice tracking control form
  */
@@ -20,7 +19,6 @@ class Invoice extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracki
     {
         return $this->_coreRegistry->registry('current_invoice');
     }
-
     /**
      * Retrieve carriers
      *

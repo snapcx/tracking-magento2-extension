@@ -5,34 +5,12 @@
  */
 namespace jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking;
 
-//use Magento\Shipping\Block\Adminhtml\Order\Tracking\View;
-
 /**
  * Shipment tracking control form
  */
+
 class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
 {
-    /**
-     * @var \Magento\Shipping\Model\CarrierFactory
-     * 
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Shipping\Model\Config $shippingConfig
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\Shipping\Model\CarrierFactory $carrierFactory
-     * @param array $data
-     */
-/*    public function __construct(
-        \Magento\Shipping\Model\CarrierFactory $carrierFactory,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Shipping\Model\Config $shippingConfig,
-        \Magento\Framework\Registry $registry,
-        array $data = []
-    ) {
-        
-        parent::__construct($carrierFactory, $scopeConfig, $context, $shippingConfig, $registry, $data);
-    }
-*/
     /**
      * Prepares layout of block
      *
@@ -47,7 +25,6 @@ class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
             ['label' => __('Add'), 'class' => 'save', 'onclick' => $onclick]
         );
     }
-
     /**
      * Retrieve save url
      *
@@ -59,7 +36,6 @@ class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
              'shipment_id' => $this->getShipment()->getId()
         ]);
     }
-
     /**
      * Retrieve save button html
      *
@@ -69,7 +45,6 @@ class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
     {
         return $this->getChildHtml('save_button');
     }
-
     /**
      * Retrieve remove url
      *
@@ -83,7 +58,6 @@ class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
             ['shipment_id' => $this->getShipment()->getId(), 'track_id' => $track->getId()]
         );
     }
-
     /**
      * @param string $code
      * @return \Magento\Framework\Phrase|string|bool
@@ -98,14 +72,11 @@ class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
         }
         return false;
     }
-    
     public function getDefaultCarrier()
     {
-        
-        return  $this
-            ->scopeConfig->getValue(
-                'shippingtracking/shippingtracking_settings/default_carrier',
-                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        return  $this->scopeConfig->getValue(
+            'shippingtracking/shippingtracking_settings/default_carrier',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
     }
 }

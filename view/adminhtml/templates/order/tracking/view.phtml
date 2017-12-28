@@ -61,10 +61,10 @@
                     <a href="#" onclick="popWin('<?php
                     /* @escapeNotVerified */ echo $this
                         ->helper('Magento\Shipping\Helper\Data')
-                        ->getTrackingPopupUrlBySalesModel($_track) 
+                        ->getTrackingPopupUrlBySalesModel($_track)
                     ?>','trackorder','width=800,height=600,resizable=yes,scrollbars=yes')"><?php
                     echo $block
-                        ->escapeHtml($_track->getNumber()) 
+                        ->escapeHtml($_track->getNumber())
                     ?></a>
                     <div id="shipment_tracking_info_response_<?php /* @escapeNotVerified */ echo $_track->getId() ?>"></div>
                     <?php endif; ?>

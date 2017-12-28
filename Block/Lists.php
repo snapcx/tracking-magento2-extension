@@ -1,22 +1,11 @@
 <?php
 namespace jframeworks\shippingtracking\Block;
 
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
+use Zend\Http\Client\Adapter\Curl;
+use jframeworks\shippingtracking\Http\HttpClient;
 
 class Lists extends \Magento\Shipping\Block\Tracking\Popup
 {
-   
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        DateTimeFormatterInterface $dateTimeFormatter,
-        array $data = []
-    ) {
-    
-        parent::__construct($context, $registry, $dateTimeFormatter, $data);
-    }
-   
     public function isEnabled()
     {
         return $this
@@ -26,7 +15,6 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
             );
     }//end function
-  
     /**
      *  Get jframeworks user_key set in config
      *
@@ -37,12 +25,11 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
             $api_key = $this
                 ->_scopeConfig
                 ->getValue(
-                    'shippingtracking/shippingtracking_settings/shippingtracking_user_key', 
+                    'shippingtracking/shippingtracking_settings/shippingtracking_user_key',
                     \Magento\Store\Model\ScopeInterface::SCOPE_STORE
                 );
             return $api_key;
     }   //end funcion
-  
   /**
    *  jframeworks api call via curl
    *    Return array derived from json reponse from api
@@ -56,7 +43,6 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
         if ($carrier_code=='dhlint') {
             $carrier_code = 'dhl';
         }
-        
         $base_url = $this
             ->_scopeConfig
             ->getValue(
@@ -66,37 +52,33 @@ class Lists extends \Magento\Shipping\Block\Tracking\Popup
         // URL to post to
         $base_url = str_replace('CARRIER_CODE', strtoupper($carrier_code), $base_url);
         $url = str_replace('TRACK_ID', $track_id, $base_url);
-            // Start cURL
-        $curl = curl_init();
-    
         // Headers
         $headers = [];
         $headers[] = 'user_key:'.$this->getUserKey();
         
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-
-        // Get response
-        $response = curl_exec($curl);
-    
+        $client = HttpClient::create($url, [
+            'adapter' => Curl::class,
+            'curloptions' => [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION=> true,
+                CURLOPT_HTTPHEADER => $headers,
+                CURLOPT_SSL_VERIFYPEER=> false,
+                CURLOPT_HEADER=> false
+            ]
+        ]);
+        
+        $response = $client->send();
         // Get HTTP status code
-        $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-        // Close cURL
-        curl_close($curl);
-                
+        $status = $response->getStatusCode();
         // Return response from server
-        if ($status==200 && $response!='') {
-            $response = json_decode($response);
+        $data = $response->getBody();
+        if ($status == 200 && $data!='') {
+            $data = json_decode($data);
         } elseif ($status==403) {
-            $response = "Please check your snapCX Subscription user key.";
+            $data = "Please check your snapCX Subscription user key.";
         } else {
-            $response = "There is no tracking available.";
+            $data= "There is no tracking available.";
         }
-        return $response;
+        return $data;
     }//end funcion
 }

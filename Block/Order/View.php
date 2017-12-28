@@ -1,24 +1,8 @@
 <?php
 namespace jframeworks\shippingtracking\Block\Order;
 
-use Magento\Framework\View\Element\Template;
-
 class View extends \Magento\Sales\Block\Order\View
 {
-
-      
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\App\Http\Context $httpContext,
-        \Magento\Payment\Helper\Data $paymentHelper,
-        array $data = []
-    ) {
-        parent::__construct($context, $registry, $httpContext, $paymentHelper, $data);
-    }
-        
-    
-    
     protected function _construct()
     {
         parent::_construct();
@@ -32,7 +16,6 @@ class View extends \Magento\Sales\Block\Order\View
              $this->setTemplate('Magento_Sales::order/view.phtml');
         }
     }
-    
     /**
      *  Check if uctracker is active
      *
@@ -40,6 +23,11 @@ class View extends \Magento\Sales\Block\Order\View
      */
     public function isActive()
     {
-        return $this->_scopeConfig->getValue('shippingtracking/shippingtracking_settings/enable', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this
+            ->_scopeConfig
+        ->getValue(
+            'shippingtracking/shippingtracking_settings/enable',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }//end function
 }

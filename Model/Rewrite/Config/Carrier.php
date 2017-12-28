@@ -1,36 +1,44 @@
 <?php
+
 /**
  * Copyright © 2016 Eecom . All rights reserved.
  */
 namespace jframeworks\shippingtracking\Model\Rewrite\Config;
 
+use Zend\Http\Client\Adapter\Curl;
+use jframeworks\shippingtracking\Http\HttpClient;
+
 class Carrier extends \Magento\Framework\DataObject implements \Magento\Framework\Option\ArrayInterface
 {
-   
     public function toOptionArray()
     {
-        $api_url ="https://api.snapcx.io/tracking/v1/getCarriers";
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $api_url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        // Get response
-        $response = curl_exec($curl);
-        // Get HTTP status code
-        $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        // Close cURL
-        curl_close($curl);
+        $api_url = 'https://api.snapcx.io/tracking/v1/getCarriers';
+        $client = HttpClient::create($api_url, [
+            'adapter' => Curl::class,
+            'curloptions' => [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION=> true,
+                CURLOPT_SSL_VERIFYPEER=> false,
+                CURLOPT_HEADER=> false
+            ]
+        ]);
         
-        $response = json_decode($response);
-    
+        // Get response
+        $response = $client->send();
+        // Get HTTP status code
+        $status = $response->getStatusCode();
+        $data = json_decode($response->getBody());
         $result = [];
-        $result[] = ['value'=>'0','label'=>'Select Default Carrier'];
-        foreach ($response as $key => $value) {
-            $result[] = ['value' => $value->carrierCode , 'label' => $value->carrierName];
+        $result[] = [
+            'value' => '0',
+            'label' => 'Select Default Carrier'
+        ];
+        foreach ($data as $key => $value) {
+            $result[] = [
+                'value' => $value->carrierCode,
+                'label' => $value->carrierName
+            ];
         }
-
-            return $result;
+        return $result;
     }
 }

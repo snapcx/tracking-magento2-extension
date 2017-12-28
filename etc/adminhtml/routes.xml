@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
-      <router id="admin">
+    <router id="admin">
         <route id="shippingtrack" frontName="shippingtrack">
             <module name="jframeworks_shippingtracking" before="Magento_Backend" />
         </route>

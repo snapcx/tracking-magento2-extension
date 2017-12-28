@@ -3,7 +3,6 @@
  * Copyright © 2016 MageWorx. All rights reserved.
  * See LICENSE.txt for license details.
  */
-
 namespace jframeworks\shippingtracking\Block\System\Config;
 
 use Magento\Backend\Block\Template\Context;
@@ -15,8 +14,7 @@ class Guide extends Field
     /**
      * @var string
      */
-    protected $_template = 'jframeworks_shippingtracking::system/config/guide.phtml';
-
+    private $template = 'jframeworks_shippingtracking::system/config/guide.phtml';
     /**
      * @param Context $context
      * @param array $data
@@ -25,9 +23,9 @@ class Guide extends Field
         Context $context,
         array $data = []
     ) {
+        $this->_template = $this->template;
         parent::__construct($context, $data);
     }
-
     /**
      * Remove scope label
      *
@@ -39,7 +37,6 @@ class Guide extends Field
         $element->unsScope()->unsCanUseWebsiteValue()->unsCanUseDefaultValue();
         return parent::render($element);
     }
-
     /**
      * Return element html
      *
@@ -48,16 +45,16 @@ class Guide extends Field
      */
     protected function _getElementHtml(AbstractElement $element)
     {
+        if ($element) {
+            $element->getElementHtml();
+        }
         return $this->_toHtml();
     }
-
     /**
      * Return ajax url for collect button
      *
      * @return string
      */
-   
-
     /**
      * Generate collect button html
      *
@@ -73,7 +70,6 @@ class Guide extends Field
                 'label' => __('Important, do these steps, if sharing embedded shipping tracking info in emails.'),
             ]
         );
-
         return $button->toHtml();
     }
 }

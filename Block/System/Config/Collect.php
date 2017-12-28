@@ -3,7 +3,6 @@
  * Copyright © 2016 MageWorx. All rights reserved.
  * See LICENSE.txt for license details.
  */
-
 namespace jframeworks\shippingtracking\Block\System\Config;
 
 use Magento\Backend\Block\Template\Context;
@@ -15,8 +14,7 @@ class Collect extends Field
     /**
      * @var string
      */
-    protected $_template = 'jframeworks_shippingtracking::system/config/collect.phtml';
-
+    private $template = 'jframeworks_shippingtracking::system/config/collect.phtml';
     /**
      * @param Context $context
      * @param array $data
@@ -25,9 +23,9 @@ class Collect extends Field
         Context $context,
         array $data = []
     ) {
+        $this->_template = $this->template;
         parent::__construct($context, $data);
     }
-
     /**
      * Remove scope label
      *
@@ -39,7 +37,6 @@ class Collect extends Field
         $element->unsScope()->unsCanUseWebsiteValue()->unsCanUseDefaultValue();
         return parent::render($element);
     }
-
     /**
      * Return element html
      *
@@ -48,9 +45,11 @@ class Collect extends Field
      */
     protected function _getElementHtml(AbstractElement $element)
     {
+        if ($element) {
+            $element->getElementHtml();
+        }
         return $this->_toHtml();
     }
-
     /**
      * Return ajax url for collect button
      *
@@ -60,7 +59,6 @@ class Collect extends Field
     {
         return $this->getUrl('shippingtrack/system_config/collect');
     }
-
     /**
      * Generate collect button html
      *
@@ -76,7 +74,6 @@ class Collect extends Field
                 'label' => __('Update Carriers'),
             ]
         );
-
         return $button->toHtml();
     }
 }

@@ -4,12 +4,12 @@
         <shippingtracking>
             <shippingtracking_settings>
                 <jframeworks_api_url>https://api.snapcx.io/tracking/v1/getTrackingDetails?carrier=CARRIER_CODE&amp;trackId=TRACK_ID</jframeworks_api_url>
-				<shippingtracking_order_page_text>
-				Your orders has been shipped by %carrier%. The tracking number is: %tracking_id%
-				</shippingtracking_order_page_text>
-				<shippingtracking_email_text>
-				Your orders has been shipped by %carrier%. The tracking number is: %tracking_id%
-				</shippingtracking_email_text>
+                <shippingtracking_order_page_text>
+                Your orders has been shipped by %carrier%. The tracking number is: %tracking_id%
+                </shippingtracking_order_page_text>
+                <shippingtracking_email_text>
+                Your orders has been shipped by %carrier%. The tracking number is: %tracking_id%
+                </shippingtracking_email_text>
             </shippingtracking_settings>
         </shippingtracking>
     </default>

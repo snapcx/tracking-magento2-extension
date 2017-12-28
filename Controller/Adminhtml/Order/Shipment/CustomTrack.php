@@ -16,14 +16,11 @@ class CustomTrack extends \Magento\Backend\App\Action
      * @see _isAllowed()
      */
     const ADMIN_RESOURCE = 'Magento_Sales::shipment';
-
     /**
      * @var \Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader
      */
     private $shipmentLoader;
-    
     private $objectMapper2;
-
     /**
      * @param Action\Context $context
      * @param \Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader $shipmentLoader
@@ -36,7 +33,6 @@ class CustomTrack extends \Magento\Backend\App\Action
         $this->objectManager2 = $context->getObjectManager();
         parent::__construct($context);
     }
-
     /**
      * Add new tracking number action
      *
@@ -71,7 +67,6 @@ class CustomTrack extends \Magento\Backend\App\Action
                     $title
                 );
                 $shipment->addTrack($track)->save();
-
                 $this->_view->loadLayout();
                 $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Shipments'));
                 $response = $this->_view->getLayout()->getBlock('shipment_tracking')->toHtml();

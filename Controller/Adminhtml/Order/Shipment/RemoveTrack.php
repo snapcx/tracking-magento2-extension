@@ -16,7 +16,6 @@ class RemoveTrack extends \Magento\Backend\App\Action
      * @see _isAllowed()
      */
     const ADMIN_RESOURCE = 'Magento_Sales::shipment';
-
     /**
      * @var \Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader
      */
@@ -34,7 +33,6 @@ class RemoveTrack extends \Magento\Backend\App\Action
         $this->objectManager2 =  $context->getObjectManager();
         parent::__construct($context);
     }
-
     /**
      * Remove tracking number from shipment
      *
@@ -54,7 +52,6 @@ class RemoveTrack extends \Magento\Backend\App\Action
                 $shipment = $this->shipmentLoader->load();
                 if ($shipment) {
                     $track->delete();
-
                     $this->_view->loadLayout();
                     $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Shipments'));
                     $response = $this->_view->getLayout()->getBlock('shipment_tracking')->toHtml();

@@ -19,9 +19,9 @@
             ->getTrackingPopupUrlBySalesModel($order);
                         $goodUrl = str_replace('/admin/', '/', $url);
                     ?>
-            <p><a href="#" id="linkId" onclick="popWin('<?php 
-                echo $goodUrl; 
-            ?>','trackorder','width=800,height=600,resizable=yes,scrollbars=yes')" title="<?php 
+            <p><a href="#" id="linkId" onclick="popWin('<?php
+                echo $goodUrl;
+            ?>','trackorder','width=800,height=600,resizable=yes,scrollbars=yes')" title="<?php
                 /* @escapeNotVerified */ echo __('Track Order Shipment(s)') ?>"><?php
                 /* @escapeNotVerified */ echo __('Track Order Shipment(s)') ?></a></p>
         <?php endif; ?>

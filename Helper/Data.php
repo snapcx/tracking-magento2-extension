@@ -3,21 +3,17 @@ namespace jframeworks\shippingtracking\Helper;
 
 class Data extends \Magento\Shipping\Helper\Data
 {
-
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $storeManager;
-    
+    private $storeManager;
      /**
       * @var \Magento\Framework\Url\EncoderInterface
       */
-    protected $urlEncoder;
+    private $urlEncoder;
+    private $scopeConfig;
+    private $messageManager;
     
-    protected $scopeConfig;
-    
-    protected $messageManager;
-
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Url\EncoderInterface $urlEncoder,
@@ -34,16 +30,16 @@ class Data extends \Magento\Shipping\Helper\Data
      *
      * @deprecated the non-model usage
      * @param  string $key
-     * @param  integer|\Magento\Sales\Model\Order|\Magento\Sales\Model\Order\Shipment|\Magento\Sales\Model\Order\Shipment\Track $model
+     * @param  integer|Order|Shipment|Track $model
      * @param  string $method - option
      * @return string
      */
-    protected function _getTrackingUrl($key, $model, $method = 'getId')
+    public function _getTrackingUrl($key, $model, $method = 'getId')
     {
         if (empty($model)) {
-               $param = [$key => '']; // @deprecated after 1.4.0.0-alpha3
+               $param = [$key => ''];  // deprecated after 1.4.0.0-alpha3
         } elseif (!is_object($model)) {
-            $param = [$key => $model]; // @deprecated after 1.4.0.0-alpha3
+            $param = [$key => $model]; // deprecated after 1.4.0.0-alpha3
         } else {
             $param = [
             'hash' => $this->urlEncoder->encode("{$key}:{$model->$method()}:{$model->getProtectCode()}")
@@ -53,7 +49,6 @@ class Data extends \Magento\Shipping\Helper\Data
         $storeModel = $this->storeManager->getStore($storeId);
         return $storeModel->getUrl('shippingtracking/lists/index', $param);
     }
-        
     public function getConfig($config_path)
     {
         return $this->scopeConfig->getValue(
@@ -61,10 +56,8 @@ class Data extends \Magento\Shipping\Helper\Data
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
     }
-        
     public function getMessage($message)
     {
-        
         return $this->messageManager->addSuccess(__($message));
     }
 }
