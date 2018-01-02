@@ -6,13 +6,13 @@ class Data extends \Magento\Shipping\Helper\Data
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    private $storeManager;
+    protected $storeManager;
      /**
       * @var \Magento\Framework\Url\EncoderInterface
       */
-    private $urlEncoder;
-    private $scopeConfig;
-    private $messageManager;
+    protected $urlEncoder;
+    protected $scopeConfig;
+    protected $messageManager;
     
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager,

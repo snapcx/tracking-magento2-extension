@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Magento
  *
@@ -67,24 +68,7 @@ table tbody th, table tbody td {
 }
 table td {
    padding: 3px 8px;
-} /*
-caption, th, td {
-   font-weight: normal;
-   text-align: left;
-   vertical-align: top;
-}
-table .odd {
-   background: #f8f7f5 none repeat scroll 0 0;
-}
-table .even {
-   background: #eeeded none repeat scroll 0 0;
-}
-button {
-   float: right;
-}
-.woocommerce_tracking{
-   margin-top: 15px;
-}*/
+} 
 </style>
 <?php
 $_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager
@@ -109,9 +93,11 @@ $shippedImageURL = $block->getViewFileUrl('jframeworks_shippingtracking::images/
             <h2 class="sub-title"><?php echo 'Shipment #'.$shipid; ?></h2>
         <?php endif; ?>
         <?php if(!empty($_result)) :?>
+             <?php echo 'result is not empty'; ?>
             <?php foreach($_result as $track_id => $track) : ?>
                 <?php if (isset($track['tracking_number']) && isset($track['carrier_code'])) :?>
                     <?php
+                    echo 'Got tracking# and carrier code.';
                     $tracking_list = $this->getTrackingList($track['tracking_number'],$track['carrier_code']);
                     ?>
                     <?php
@@ -123,6 +109,7 @@ $shippedImageURL = $block->getViewFileUrl('jframeworks_shippingtracking::images/
                         && (empty($tracking_list->trackRecord[0]->trackSummary->errorMessage))
                     ) : ?>
                     <?php
+                    echo 'Got SUCCESS response.';
                     $trackSummaryVar = $tracking_list->trackRecord[0]->trackSummary;
                     $isDelivered = ((int)$trackSummaryVar->delivered == 1)?true:false;
                     ?>
@@ -207,10 +194,11 @@ $shippedImageURL = $block->getViewFileUrl('jframeworks_shippingtracking::images/
                     </div>
                     <?php else : ?>
                     <p>
-                        <?php
+                    <?php echo 'Got into else'; ?>
+                        <!-- ?php
                         $trackSummaryVar = $tracking_list->header->request->requestParams[1]->value;
                         echo 'Invalid Tracking Number '.$this->escapeHtml($trackSummaryVar).' ';
-                        ?>
+                        ? -->
                     </p>
                     <?php endif; ?>
                 <?php endif; ?>

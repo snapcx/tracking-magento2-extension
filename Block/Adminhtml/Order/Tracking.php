@@ -15,8 +15,8 @@ use jframeworks\shippingtracking\Http\HttpClient;
 
 class Tracking extends \Magento\Shipping\Block\Adminhtml\Order\Tracking
 {
-    private $scopeConfig;
-    private $carrierFactory;
+    protected $scopeConfig;
+    protected $carrierFactory;
     public function __construct(
         \Magento\Shipping\Model\CarrierFactory $carrierFactory,
         \Magento\Backend\Block\Template\Context $context,
