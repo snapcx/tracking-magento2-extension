@@ -93,11 +93,9 @@ $shippedImageURL = $block->getViewFileUrl('jframeworks_shippingtracking::images/
             <h2 class="sub-title"><?php echo 'Shipment #'.$shipid; ?></h2>
         <?php endif; ?>
         <?php if(!empty($_result)) :?>
-             <?php echo 'result is not empty'; ?>
             <?php foreach($_result as $track_id => $track) : ?>
                 <?php if (isset($track['tracking_number']) && isset($track['carrier_code'])) :?>
                     <?php
-                    echo 'Got tracking# and carrier code.';
                     $tracking_list = $this->getTrackingList($track['tracking_number'],$track['carrier_code']);
                     ?>
                     <?php
@@ -109,7 +107,6 @@ $shippedImageURL = $block->getViewFileUrl('jframeworks_shippingtracking::images/
                         && (empty($tracking_list->trackRecord[0]->trackSummary->errorMessage))
                     ) : ?>
                     <?php
-                    echo 'Got SUCCESS response.';
                     $trackSummaryVar = $tracking_list->trackRecord[0]->trackSummary;
                     $isDelivered = ((int)$trackSummaryVar->delivered == 1)?true:false;
                     ?>
@@ -194,11 +191,10 @@ $shippedImageURL = $block->getViewFileUrl('jframeworks_shippingtracking::images/
                     </div>
                     <?php else : ?>
                     <p>
-                    <?php echo 'Got into else'; ?>
-                        <!-- ?php
+                        <?php
                         $trackSummaryVar = $tracking_list->header->request->requestParams[1]->value;
                         echo 'Invalid Tracking Number '.$this->escapeHtml($trackSummaryVar).' ';
-                        ? -->
+                        ?>
                     </p>
                     <?php endif; ?>
                 <?php endif; ?>
