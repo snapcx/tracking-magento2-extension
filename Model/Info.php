@@ -8,11 +8,11 @@ class Info extends \Magento\Shipping\Model\Info
     /**
      * @var \Magento\Sales\Model\Order\Shipment\TrackFactory
      */
-    private $salesOrderShipmentTrackFactory;
+    protected $salesOrderShipmentTrackFactory;
      /**
       * @var \Magento\Store\Model\StoreManagerInterface
       */
-    private $scopeConfig;
+    protected $scopeConfig;
     
     public function __construct(
         \Magento\Shipping\Helper\Data $shippingData,
