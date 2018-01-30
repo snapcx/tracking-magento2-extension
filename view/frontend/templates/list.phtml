@@ -226,10 +226,10 @@ echo 'Invalid Tracking Number '.$this->escapeHtml($trackSummaryVar).' ';
 ?> 
 <!--end for each tracking information-->
 <?php endforeach; ?>
-<?php else { ?>
+<?php else: ?>
 <p><?php echo 'There is no tracking available for this shipment.';
  ?></p>
-<?php } endif; ?>
+<?php endif; ?>
 <?php endforeach; ?>
 <?php else: ?>
 <p><?php echo 'There is no tracking available.';
