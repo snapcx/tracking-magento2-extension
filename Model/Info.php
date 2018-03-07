@@ -1,5 +1,5 @@
 <?php
-namespace jframeworks\shippingtracking\Model;
+namespace Jframeworks\Shippingtracking\Model;
 
 use Magento\Sales\Model\Order\Shipment;
 

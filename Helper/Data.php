@@ -1,5 +1,5 @@
 <?php
-namespace jframeworks\shippingtracking\Helper;
+namespace Jframeworks\Shippingtracking\Helper;
 
 class Data extends \Magento\Shipping\Helper\Data
 {

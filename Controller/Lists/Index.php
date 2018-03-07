@@ -1,5 +1,5 @@
 <?php
-namespace jframeworks\shippingtracking\Controller\Lists;
+namespace Jframeworks\Shippingtracking\Controller\Lists;
 
 class Index extends \Magento\Framework\App\Action\Action
 {

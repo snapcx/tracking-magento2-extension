@@ -1,5 +1,5 @@
 <?php
-namespace jframeworks\shippingtracking\Block;
+namespace Jframeworks\Shippingtracking\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;

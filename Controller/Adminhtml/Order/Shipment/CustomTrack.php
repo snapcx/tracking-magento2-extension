@@ -4,7 +4,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace jframeworks\shippingtracking\Controller\Adminhtml\Order\Shipment;
+namespace Jframeworks\Shippingtracking\Controller\Adminhtml\Order\Shipment;
 
 use Magento\Backend\App\Action;
 

@@ -18,7 +18,7 @@
     </div>
     <div class="admin__page-section-item-content">
         <?php  if ($order->getTracksCollection()->count()) : ?>
-		<?php $url =  $this->helper('jframeworks\shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($order); 
+		<?php $url =  $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($order);
 						$goodUrl = str_replace('/admin/', '/', $url);
 						
 					?>

@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
     <router id="standard">
         <route id="shippingtracking" frontName="shippingtracking">
-            <module name="jframeworks_shippingtracking" />
+            <module name="Jframeworks_Shippingtracking" />
         </route>
     </router>
 </config>

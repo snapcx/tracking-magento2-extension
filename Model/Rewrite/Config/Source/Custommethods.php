@@ -3,7 +3,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace jframeworks\shippingtracking\Model\Rewrite\Config\Source;
+namespace Jframeworks\Shippingtracking\Model\Rewrite\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 

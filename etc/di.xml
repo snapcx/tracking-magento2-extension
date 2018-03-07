@@ -5,16 +5,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<preference for="Magento\Sales\Block\Order\View" type="jframeworks\shippingtracking\Block\Order\View" /> 
-	<preference for="Magento\Shipping\Model\Info" type="jframeworks\shippingtracking\Model\Info"/> 	
-	 <preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddTrack" type="jframeworks\shippingtracking\Controller\Adminhtml\Order\Shipment\CustomTrack"/>
-	<preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\RemoveTrack" type="jframeworks\shippingtracking\Controller\Adminhtml\Order\Shipment\RemoveTrack"/> 
+	<preference for="Magento\Shipping\Model\Info" type="Jframeworks\Shippingtracking\Model\Info"/>
+	<preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddTrack" type="Jframeworks\Shippingtracking\Controller\Adminhtml\Order\Shipment\CustomTrack"/>
+	<preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\RemoveTrack" type="Jframeworks\Shippingtracking\Controller\Adminhtml\Order\Shipment\RemoveTrack"/>
 	
-	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking" /> 
-	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking\View" />
-	<!-- <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\Invoice" type="jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" />  --> 	
-	
-	
-	
-	
+	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking" />
+	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\View" />
+	<!-- <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\Invoice" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" />  -->
 </config>

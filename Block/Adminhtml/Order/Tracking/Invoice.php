@@ -7,9 +7,9 @@
 /**
  * Invoice tracking control form
  */
-namespace jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking;
+namespace Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking;
 
-class Invoice extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
+class Invoice extends \Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking
 {
     /**
      * Retrieve invoice

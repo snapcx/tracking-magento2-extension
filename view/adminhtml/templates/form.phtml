@@ -35,7 +35,7 @@
                 <div class="shipping-description-wrapper">
                     <?php if ($block->getShipment()->getTracksCollection()->count()): ?>
 					
-					<?php $url =  $this->helper('jframeworks\shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($block->getShipment()); 
+					<?php $url =  $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($block->getShipment());
 						$goodUrl = str_replace('/admin/', '/', $url);
 						
 					?>

@@ -3,7 +3,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking;
+namespace Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking;
 
 //use Magento\Shipping\Block\Adminhtml\Order\Tracking\View;
 
@@ -11,7 +11,7 @@ namespace jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking;
  * Shipment tracking control form
  *
  */
-class View extends \jframeworks\shippingtracking\Block\Adminhtml\Order\Tracking
+class View extends \Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking
 {
     /**
      * @var \Magento\Shipping\Model\CarrierFactory

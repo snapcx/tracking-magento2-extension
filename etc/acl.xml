@@ -5,7 +5,7 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="jframeworks_shippingtracking::snapx_control_section" title="snapCX Control Section" />
+                            <resource id="Jframeworks_Shippingtracking::snapcx_control_section" title="snapCX Control Section" />
                         </resource>
                     </resource>
                 </resource>

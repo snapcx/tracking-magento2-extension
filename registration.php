@@ -4,6 +4,6 @@
  */
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'jframeworks_shippingtracking',
+    'Jframeworks_Shippingtracking',
     __DIR__
 );
