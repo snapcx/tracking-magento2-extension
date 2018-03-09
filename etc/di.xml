@@ -5,11 +5,12 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<preference for="Magento\Shipping\Model\Info" type="Jframeworks\Shippingtracking\Model\Info"/>
-	<preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddTrack" type="Jframeworks\Shippingtracking\Controller\Adminhtml\Order\Shipment\CustomTrack"/>
-	<preference for ="Magento\Shipping\Controller\Adminhtml\Order\Shipment\RemoveTrack" type="Jframeworks\Shippingtracking\Controller\Adminhtml\Order\Shipment\RemoveTrack"/>
-	
-	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking" />
-	<preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\View" />
-	<!-- <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\Invoice" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" />  -->
+    <type name="Magento/Shipping/Model/Order/Track">
+        <plugin name="Jframeworks_Shippingtracking_Shipping_Model_Order_Track" type="Jframeworks/Shippingtracking/Plugin/ShippingModelOrderTrackPlugin" sortOrder="1" disabled="false"/>
+    </type>
+    <preference for="Magento/Shipping/Controller/Adminhtml/Order/Shipment/AddTrack" type="Jframeworks/Shippingtracking/Controller/Adminhtml/Order/Shipment/CustomTrack"/>
+    <preference for="Magento/Shipping/Controller/Adminhtml/Order/Shipment/RemoveTrack" type="Jframeworks/Shippingtracking/Controller/Adminhtml/Order/Shipment/RemoveTrack"/>
+    <preference for="Magento/Shipping/Block/Adminhtml/Order/Tracking" type="Jframeworks/Shippingtracking/Block/Adminhtml/Order/Tracking"/>
+    <preference for="Magento/Shipping/Block/Adminhtml/Order/Tracking/View" type="Jframeworks/Shippingtracking/Block/Adminhtml/Order/Tracking/View"/>
+    <!-- <preference for="Magento/Shipping/Block/Adminhtml/Order/Tracking/Invoice" type="Jframeworks/Shippingtracking/Block/Adminhtml/Order/Tracking/Invoice" />  -->
 </config>
