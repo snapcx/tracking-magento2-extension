@@ -18,16 +18,20 @@ class Data extends \Magento\Shipping\Helper\Data
     
     protected $messageManager;
 
+    protected $urlBuilder;
+
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Url\EncoderInterface $urlEncoder,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\Message\ManagerInterface $messageManager
+        \Magento\Framework\Message\ManagerInterface $messageManager,
+        \Magento\Framework\UrlInterface $urlBuilder
     ) {
         $this->storeManager = $storeManager;
         $this->urlEncoder = $urlEncoder;
          $this->scopeConfig = $scopeConfig;
          $this->messageManager = $messageManager;
+        $this->urlBuilder = $urlBuilder;
     }
     /**
      * Retrieve tracking url with params
@@ -49,9 +53,15 @@ class Data extends \Magento\Shipping\Helper\Data
             'hash' => $this->urlEncoder->encode("{$key}:{$model->$method()}:{$model->getProtectCode()}")
             ];
         }
+
         $storeId = is_object($model) ? $model->getStoreId() : null;
         $storeModel = $this->storeManager->getStore($storeId);
-        return $storeModel->getUrl('shippingtracking/lists/index', $param);
+
+        $url = $storeModel->getUrl('shippingtracking/lists/index', $param);
+        $baseUrl = $this->urlBuilder->getBaseUrl();
+        $url = $baseUrl . preg_replace('/(.*)shippingtracking/', 'shippingtracking', $url);
+
+        return $url;
     }
         
     public function getConfig($config_path)

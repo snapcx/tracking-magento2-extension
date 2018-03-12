@@ -35,12 +35,9 @@
                 <div class="shipping-description-wrapper">
                     <?php if ($block->getShipment()->getTracksCollection()->count()): ?>
 					
-					<?php $url =  $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($block->getShipment());
-						$goodUrl = str_replace('/admin/', '/', $url);
-						
-					?>
+					<?php $url = $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($block->getShipment()); ?>
                         <p>
-                            <a href="#" id="linkId" onclick="popWin('<?php echo $goodUrl; ?>','trackshipment','width=800,height=600,resizable=yes,scrollbars=yes')" title="<?php /* @escapeNotVerified */ echo __('Track this shipment') ?>"><?php /* @escapeNotVerified */ echo __('Track this shipment') ?></a>
+                            <a href="#" id="linkId" onclick="popWin('<?php echo $url; ?>','trackshipment','width=800,height=600,resizable=yes,scrollbars=yes')" title="<?php /* @escapeNotVerified */ echo __('Track this shipment') ?>"><?php /* @escapeNotVerified */ echo __('Track this shipment') ?></a>
                         </p>
                     <?php endif; ?>
                     <div class="shipping-description-title">

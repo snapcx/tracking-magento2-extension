@@ -57,11 +57,8 @@
                     <?php if ($_track->isCustom()): ?>
                     <?php echo $block->escapeHtml($_track->getNumber()) ?>
                     <?php else: ?>
-					<?php $url =  $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_track);
-						$goodUrl = str_replace('/admin/', '/', $url);
-						
-					?>
-                    <a href="#" onclick="popWin('<?php echo $goodUrl; ?>','trackorder','width=800,height=600,resizable=yes,scrollbars=yes')"><?php echo $block->escapeHtml($_track->getNumber()) ?></a>
+					<?php $url = $this->helper('Jframeworks\Shippingtracking\Helper\Data')->getTrackingPopupUrlBySalesModel($_track); ?>
+                    <a href="#" onclick="popWin('<?php echo $url; ?>','trackorder','width=800,height=600,resizable=yes,scrollbars=yes')"><?php echo $block->escapeHtml($_track->getNumber()) ?></a>
                     <div id="shipment_tracking_info_response_<?php /* @escapeNotVerified */ echo $_track->getId() ?>"></div>
                     <?php endif; ?>
                 </td>
