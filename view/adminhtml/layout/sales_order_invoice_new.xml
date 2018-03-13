@@ -7,8 +7,9 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock ifconfig="shippingtracking/shippingtracking_settings/enable" name="form">
-            <block  class="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" name="tracking" template="order/tracking.phtml"/>
+        <referenceBlock name="form">
+            <block class="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" name="tracking" template="order/tracking.phtml"
+                   ifconfig="shippingtracking/shippingtracking_settings/enable" />
         </referenceBlock>
     </body>
 </page>
