@@ -6,14 +6,16 @@ class ShippingBlockAdminhtmlOrderTrackingPlugin
 {
     protected $_scopeConfig;
     protected $_carrierFactory;
+    protected $_helper;
 
     public function __construct(
         \Magento\Shipping\Model\CarrierFactory $carrierFactory,
         \Magento\Backend\Block\Template\Context $context,
-        array $data = []
+        \Jframeworks\Shippingtracking\Helper\Data $helper
     ) {
         $this->_carrierFactory = $carrierFactory;
         $this->_scopeConfig = $context->getScopeConfig();
+        $this->_helper = $helper;
     }
 
     public function afterGetCarriers(\Magento\Shipping\Block\Adminhtml\Order\Tracking $subject, $result)
@@ -26,6 +28,7 @@ class ShippingBlockAdminhtmlOrderTrackingPlugin
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curl, CURLOPT_HEADER, false);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $this->_helper->getHeaders());
             // Get response
             $response = curl_exec($curl);
             // Get HTTP status code

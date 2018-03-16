@@ -20,18 +20,26 @@ class Data extends \Magento\Shipping\Helper\Data
 
     protected $urlBuilder;
 
+    protected $productMetadata;
+
+    protected $moduleList;
+
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Url\EncoderInterface $urlEncoder,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Framework\Message\ManagerInterface $messageManager,
-        \Magento\Framework\UrlInterface $urlBuilder
+        \Magento\Framework\UrlInterface $urlBuilder,
+        \Magento\Framework\App\ProductMetadata $productMetadata,
+        \Magento\Framework\Module\ModuleListInterface $moduleList
     ) {
         $this->storeManager = $storeManager;
         $this->urlEncoder = $urlEncoder;
-         $this->scopeConfig = $scopeConfig;
-         $this->messageManager = $messageManager;
+        $this->scopeConfig = $scopeConfig;
+        $this->messageManager = $messageManager;
         $this->urlBuilder = $urlBuilder;
+        $this->productMetadata = $productMetadata;
+        $this->moduleList = $moduleList;
     }
     /**
      * Retrieve tracking url with params
@@ -76,5 +84,40 @@ class Data extends \Magento\Shipping\Helper\Data
     {
         
         return $this->messageManager->addSuccess(__($message));
+    }
+
+    public function getMagentoVersion()
+    {
+        return $this->productMetadata->getVersion();
+    }
+
+    public function getExtensionVersion()
+    {
+        $moduleCode = 'Jframeworks_Shippingtracking';
+        $moduleInfo = $this->moduleList->getOne($moduleCode);
+        return $moduleInfo['setup_version'];
+    }
+
+    /**
+     *  Get jframeworks user_key set in config
+     *
+     * @return     string
+     */
+    public function getUserKey()
+    {
+        return $this->getConfig(
+            'shippingtracking/shippingtracking_settings/shippingtracking_user_key',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+    }
+
+    public function getHeaders()
+    {
+        return array(
+            'user_key: '.$this->getUserKey(),
+            'platform: magento',
+            'version: '.$this->getMagentoVersion(),
+            'pVersion: '.$this->getExtensionVersion()
+        );
     }
 }

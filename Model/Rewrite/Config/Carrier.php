@@ -6,12 +6,16 @@ namespace Jframeworks\Shippingtracking\Model\Rewrite\Config;
 
 class Carrier extends \Magento\Framework\DataObject implements \Magento\Framework\Option\ArrayInterface
 {
-   
+    protected $helper;
+
+    public function __construct(
+        \Jframeworks\Shippingtracking\Helper\Data $helper
+    ) {
+        $this->helper = $helper;
+    }
+
     public function toOptionArray()
     {
-       
-        
-        
         $api_url ="https://api.snapcx.io/tracking/v1/getCarriers";
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $api_url);
@@ -19,6 +23,7 @@ class Carrier extends \Magento\Framework\DataObject implements \Magento\Framewor
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->helper->getHeaders());
         // Get response
         $response = curl_exec($curl);
         // Get HTTP status code

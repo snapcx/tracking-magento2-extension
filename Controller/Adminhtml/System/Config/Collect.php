@@ -13,12 +13,15 @@ use Magento\Framework\Controller\Result\JsonFactory;
 class Collect extends Action
 {
     protected $resultJsonFactory;
+    protected $helper;
 
     public function __construct(
         Context $context,
-        JsonFactory $resultJsonFactory
+        JsonFactory $resultJsonFactory,
+        \Jframeworks\Shippingtracking\Helper\Data $helper
     ) {
         $this->resultJsonFactory = $resultJsonFactory;
+        $this->helper = $helper;
         parent::__construct($context);
     }
 
@@ -36,6 +39,7 @@ class Collect extends Action
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->helper->getHeaders());
         // Get response
         $response = curl_exec($curl);
         // Get HTTP status code
