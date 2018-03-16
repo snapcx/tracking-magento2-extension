@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright © 2016 MageWorx. All rights reserved.
- * See LICENSE.txt for license details.
+ * Copyright © 2016 JFrameworks LLC. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 namespace Jframeworks\Shippingtracking\Block\System\Config;

@@ -1,6 +1,7 @@
 <?php
 /**
- * Copyright © 2016 Eecom . All rights reserved.
+ * Copyright © 2016 JFrameworks LLC. All rights reserved.
+ * See COPYING.txt for license details.
  */
 namespace Jframeworks\Shippingtracking\Model\Rewrite\Config;
 
