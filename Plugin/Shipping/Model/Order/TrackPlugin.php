@@ -1,8 +1,8 @@
 <?php
 
-namespace Jframeworks\Shippingtracking\Plugin;
+namespace Jframeworks\Shippingtracking\Plugin\Shipping\Model\Order;
 
-class ShippingModelOrderTrackPlugin
+class TrackPlugin
 {
     protected $_scopeConfig;
 

@@ -7,11 +7,11 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Shipping\Model\Order\Track">
-        <plugin name="Jframeworks_Shippingtracking_Shipping_Model_Order_Track" type="Jframeworks\Shippingtracking\Plugin\ShippingModelOrderTrackPlugin" sortOrder="1" disabled="false"/>
+        <plugin name="Jframeworks_Shippingtracking_Shipping_Model_Order_Track" type="Jframeworks\Shippingtracking\Plugin\Shipping\Model\Order\TrackPlugin" sortOrder="1" disabled="false"/>
     </type>
     <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking" />
     <type name="Magento\Shipping\Block\Adminhtml\Order\Tracking">
-        <plugin name="Jframeworks_Shippingtracking_Shipping_Block_Adminhtml_Order_Tracking" type="Jframeworks\Shippingtracking\Plugin\ShippingBlockAdminhtmlOrderTrackingPlugin" sortOrder="1" disabled="false"/>
+        <plugin name="Jframeworks_Shippingtracking_Shipping_Block_Adminhtml_Order_Tracking" type="Jframeworks\Shippingtracking\Plugin\Shipping\Block\Adminhtml\Order\TrackingPlugin" sortOrder="1" disabled="false"/>
     </type>
     <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\View" />
     <!-- <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\Invoice" type="Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking\Invoice" />  -->
