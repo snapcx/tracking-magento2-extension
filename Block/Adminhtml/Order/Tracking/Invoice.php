@@ -9,7 +9,9 @@
  */
 namespace Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking;
 
-class Invoice extends \Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking
+use \Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking;
+
+class Invoice extends Tracking
 {
     /**
      * Retrieve invoice
