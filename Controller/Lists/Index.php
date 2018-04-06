@@ -4,38 +4,36 @@ namespace Jframeworks\Shippingtracking\Controller\Lists;
 class Index extends \Magento\Framework\App\Action\Action
 {
     protected $registry;
-    
-    protected $_Info;
-    
-    protected $_pageFactory;
+    protected $info;
+    protected $pageFactory;
 
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\Registry $registry,
-        \Magento\Shipping\Model\Info $Info,
+        \Magento\Shipping\Model\Info $info,
         \Magento\Framework\View\Result\PageFactory $pageFactory
     ) {
         $this->registry = $registry;
-        $this->_Info = $Info;
-        $this->_pageFactory = $pageFactory;
+        $this->info = $info;
+        $this->pageFactory = $pageFactory;
         return parent::__construct($context);
     }
 
-  /**
-   * List of the trcking information
-   *
-   * @var null
-   * @return null
-   */
+    /**
+     * List of the tracking information
+     *
+     * @var null
+     * @return null
+     */
     public function execute()
     {
-    
-        $shippingInfoModel = $this->_Info->loadByHash($this->getRequest()->getParam('hash'));
-        $this->registry->register('current_shipping_info', $shippingInfoModel);
+
+        $shippingInfoModel = $this->info->loadByHash($this->getRequest()->getParam('hash'));
+        $this->registry->register('current_shippinginfo', $shippingInfoModel);
         if (count($shippingInfoModel->getTrackingInfo()) == 0) {
             return;
         }
-        return $this->_pageFactory->create();
+        return $this->pageFactory->create();
     }
 }
