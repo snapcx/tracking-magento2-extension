@@ -30,7 +30,7 @@ class Index extends \Magento\Framework\App\Action\Action
     {
 
         $shippingInfoModel = $this->info->loadByHash($this->getRequest()->getParam('hash'));
-        $this->registry->register('current_shippinginfo', $shippingInfoModel);
+        $this->registry->register('current_shipping_info', $shippingInfoModel);
         if (count($shippingInfoModel->getTrackingInfo()) == 0) {
             return;
         }
