@@ -111,13 +111,4 @@ class Data extends \Magento\Shipping\Helper\Data
         );
     }
 
-    public function getHeaders()
-    {
-        return array(
-            'user_key: '.$this->getUserKey(),
-            'platform: magento',
-            'version: '.$this->getMagentoVersion(),
-            'pVersion: '.$this->getExtensionVersion()
-        );
-    }
 }
