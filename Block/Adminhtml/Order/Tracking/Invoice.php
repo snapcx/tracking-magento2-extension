@@ -9,27 +9,13 @@
  */
 namespace Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking;
 
-use \Jframeworks\Shippingtracking\Block\Adminhtml\Order\Tracking;
-
-class Invoice extends Tracking
+class Invoice extends \Magento\Shipping\Block\Adminhtml\Order\Tracking\Invoice
 {
-    /**
-     * Retrieve invoice
-     *
-     * @return \Magento\Sales\Model\Order\Shipment
-     */
-    public function getInvoice()
+    public function getDefaultCarrier()
     {
-        return $this->_coreRegistry->registry('current_invoice');
-    }
-
-    /**
-     * Retrieve carriers
-     *
-     * @return array
-     */
-    protected function _getCarriersInstances()
-    {
-        return $this->_shippingConfig->getAllCarriers($this->getInvoice()->getStoreId());
+        return $this->_scopeConfig->getValue(
+            'shippingtracking/shippingtracking_settings/default_carrier',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 }
